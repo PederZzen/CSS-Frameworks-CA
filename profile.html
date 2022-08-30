@@ -3,9 +3,82 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <title>Dude Broman | fakebook</title>
 </head>
-<body>
-    <h1>Profile</h1>
+<body class="bg-secondary" style="min-width: 20rem;">
+    
+    <header class="container">
+        <div class="row">
+            <nav class="navbar navbar-expand-md">
+                <div class="container-fluid">
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                        <p class="h4 navbar-toggler border-0">Menu</p>
+                    </button>
+                    <a class="text-decoration-none h4 text-primary" href="./home.html">fakebook</a>
+                    <div class="collapse navbar-collapse" id="navbarToggle">
+                        <span class="me-auto"></span>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2 bg-transparent mt-3" type="search" placeholder="Search">
+                            <button class="btn btn-outline-success mt-3" type="submit">
+                                <img src="./img/search.svg" alt="Search icon">
+                            </button>
+                        </form>
+                        <a href="./profile.html">
+                            <img src="./img/user-image.svg" class="p-3" alt="User image">
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+        <div class="row">
+            <section class="col-12">
+                <img src="./img/Dude Broman.jpg" alt="Profile picture of Dude Broman" class="rounded-circle">
+                <h1 class="m-4">Dude Broman</h1>
+            </section>
+            <section class="col-md-6 col-12 mt-3">
+                <h2 class="h5">About</h2>
+                <div class="card p-2">
+                    <ul class="list-unstyled">
+                        <li>In a relationship with <strong>Bro Dudeman</strong></li>
+                        <li>Lives in <strong>Los Angeles, CA</strong></li>
+                        <li>Born <strong>Aug. 28 1982</strong></li>
+                    </ul>
+                </div>
+            </section>
+            <section class="col-md-6 col-12 mt-3">
+                <h2 class="h5">Friends</h2>
+                <div class="card p-2">
+                    <ul class="list-unstyled">
+                        <li class="p-1"><img src="./img/user-image.svg"  alt="User image">Betty White</li>
+                        <li class="p-1"><img src="./img/user-image.svg"  alt="User image">Bro Dudeman</li>
+                        <li class="p-1"><img src="./img/user-image.svg"  alt="User image">Robert Whatshisface</li>
+                        <li class="p-1"><img src="./img/user-image.svg"  alt="User image">Rick Sanchez</li>
+                    </ul>
+                </div>
+            </section>
+            <section class="col-12 mt-3">
+                <h2 class="h5">Posts</h2>
+                <div class="card p-2 mt-2">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi aut similique vero molestiae, architecto sunt ut nulla quas aperiam sit fuga ipsam distinctio expedita, harum veniam. Corrupti laborum esse necessitatibus?
+                </div>
+                <div class="card p-2 mt-2">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi aut similique vero molestiae, architecto sunt ut nulla quas aperiam sit fuga ipsam distinctio expedita, harum veniam. Corrupti laborum esse necessitatibus?
+                </div>
+                <div class="card p-2 mt-2">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi aut similique vero molestiae, architecto sunt ut nulla quas aperiam sit fuga ipsam distinctio expedita, harum veniam. Corrupti laborum esse necessitatibus?
+                </div>
+                <div class="card p-2 mt-2">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi aut similique vero molestiae, architecto sunt ut nulla quas aperiam sit fuga ipsam distinctio expedita, harum veniam. Corrupti laborum esse necessitatibus?
+                </div>
+            </section>
+        </div>
+        
+
+    </main>
 </body>
 </html>

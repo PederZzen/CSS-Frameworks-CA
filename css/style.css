@@ -2020,7 +2020,7 @@ progress {
   height: 1.5em;
 }
 .form-control::placeholder {
-  color: #6c757d;
+  color: rgb(32, 32, 32);
   opacity: 1;
 }
 .form-control:disabled {

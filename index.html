@@ -7,16 +7,26 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Login | Fakebook</title>
 </head>
+
 <body class="text-white" style="min-width: 20rem;">
-    <section class="container text-center w-75 mt-4" style="max-width: 25rem;">
-        <img src="./img/logo.svg" alt="logo" class="mt-5">
-        <h1 class="h3 mt-2">fakebook</h1>            
-        <h2 class="m-5 h4 font-size-1">Sign in to your account</h2>
+    <section class="container w-75 mt-4" style="max-width: 25rem;">
+        <div class="text-center">
+            <img src="./img/logo.svg" alt="logo" class="mt-5">
+            <h1 class="h3 mt-2">fakebook</h1>            
+            <h2 class="m-5 h4 font-size-1">Sign in to your account</h2>            
+        </div>
         <form action="/home.html" class="d-flex flex-column gap-4">
-            <input type="email" name="email" id="email" placeholder="Email" class="bg-transparent border-0 border-bottom text-white" style="outline: none;">
-            <input type="password" name="password" id="password" placeholder="Password" class="bg-transparent border-0 border-bottom text-white" style="outline: none;">
-            <input type="submit" value="Login" class="bg-primary border-0 rounded-5 p-2 text-white h5">
-        </form>        
+            <div class="form-floating">
+                <input type="email" id="email" name="email" id="email" placeholder="Email" class="form-control bg-transparent text-white" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" id="password" placeholder="Password" class="form-control bg-transparent text-white" required>
+                <label for="password">Password</label>               
+            </div>
+            <input type="submit" value="Login" class="btn btn-primary text-white rounded-5">                 
+        </form> 
     </section>
 </body>
+
 </html>

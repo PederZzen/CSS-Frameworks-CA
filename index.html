@@ -9,24 +9,26 @@
     <title>Login | The Real fakebook</title>
 </head>
 
-<body class="text-white" style="min-width: 20rem;">
-    <section class="container w-75 mt-4" style="max-width: 25rem;">
-        <div class="text-center">
-            <img src="./img/logo.svg" alt="logo" class="mt-5">
-            <h1 class="h3 mt-2">The Real fakebook</h1>            
-            <h2 class="m-5 h4 font-size-1">Sign in to your account</h2>            
-        </div>
-        <form action="/home.html" class="d-flex flex-column gap-4">
-            <div class="form-floating">
-                <input type="email" id="email" name="email" id="email" placeholder="Email" class="form-control bg-transparent text-white" required>
-                <label for="email">Email</label>
+<body class="text-white container">
+    <section class="row">
+        <div class="col-8 col-md-6 col-lg-4 mx-auto mt-4">
+            <div class="text-center">
+                <img src="./img/logo.svg" alt="logo" class="mt-5">
+                <h1 class="h3 mt-2">The Real fakebook</h1>            
+                <h2 class="m-5 h4 font-size-1">Sign in to your account</h2>            
             </div>
-            <div class="form-floating">
-                <input type="password" name="password" id="password" placeholder="Password" class="form-control bg-transparent text-white" required>
-                <label for="password">Password</label>               
-            </div>
-            <input type="submit" value="Login" class="btn btn-primary text-white rounded-5">                 
-        </form> 
+            <form action="/home.html" class="d-flex flex-column gap-4">
+                <div class="form-floating">
+                    <input type="email" id="email" name="email" id="email" placeholder="Email" class="form-control bg-transparent text-white" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" name="password" id="password" placeholder="Password" class="form-control bg-transparent text-white" required>
+                    <label for="password">Password</label>               
+                </div>
+                <input type="submit" value="Login" class="btn btn-primary text-white rounded-5">                 
+            </form> 
+        </div>        
     </section>
 </body>
 

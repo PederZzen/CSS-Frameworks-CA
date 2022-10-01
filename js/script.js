@@ -60,13 +60,25 @@ async function registerNewUser (url, userData) {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-
-    if (validForm) {
-
-        console.log(url, userData);
-    
-        console.log(userData);
+    try {
+        const postData = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData)
+        }
+        const response = await fetch(url, postData);
+        const json = await response.json();
+    } catch (error) {
+        console.log(error);
     }
+
+    const newUser = {
+        email,
+        password,
+    }
+
 }
 
 submitBtn.addEventListener("click", formValidator);

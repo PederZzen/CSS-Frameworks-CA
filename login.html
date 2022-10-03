@@ -15,11 +15,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="./js/script.js" defer></script>
+    <script src="./js/login.js" defer></script>
     <title>Login | The Real fakebook</title>
 </head>
 
 <body class="text-white container">
+    <div id="emailError" class="bg-danger text-center"></div>
+    <div id="passwordError" class="bg-danger text-center"></div>
     <section class="row">
         <div class="col-8 col-md-6 col-lg-4 mx-auto mt-4">
             <div class="text-center">
@@ -27,16 +29,16 @@
                 <h1 class="h3 mt-2 fw-bold">The Real fakebook</h1>            
                 <h2 class="m-4 h4 font-size-1">Log in to your account</h2>            
             </div>
-            <form action="./home.html" class="d-flex flex-column gap-4">
+            <form action="./home.html" id="signUpForm" class="d-flex flex-column gap-4">
                 <div class="form-floating">
-                    <input type="email" id="email" name="email" id="email" placeholder="Email" class="form-control bg-transparent text-white" required>
+                    <input type="email" id="email" name="email" id="email" placeholder="Email" class="form-control bg-transparent text-white">
                     <label for="email">Email</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" name="password" id="password" placeholder="Password" class="form-control bg-transparent text-white" required>
+                    <input type="password" name="password" id="password" placeholder="Password" class="form-control bg-transparent text-white">
                     <label for="password">Password</label>               
                 </div>
-                <input type="submit" value="Login" class="btn btn-primary text-white rounded-5">                 
+                <input type="submit" value="Login" id="loginBtn" class="btn btn-primary text-white rounded-5">                 
             </form> 
             <p class="text-center m-4">New to The Real fakebook? <a href="./index.html" class="text-primary ">Sign up</a></p>
         </div>        

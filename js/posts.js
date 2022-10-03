@@ -5,11 +5,11 @@ const postsUrl = `${API_BASE_URL}/api/v1/social/posts/?_author=true`;
 let listPosts = (posts) => {
     let newPost = "";
     for (let post of posts) {
-        console.log(post);
+        // console.log(post);
         newPost += `
         <div class="card p-3 mt-3 d-flex>
             <img src="#" class="" alt="">
-            <a href="">
+            <a href="../singlePost.html?id=${post.id}">
                 <h3 class="h5 pt-2 fw-bold text-capitalize">${post.title}</h3>
             <a/>
             <a href="#" class="font-italic">@${post.author.name}</a>
@@ -43,4 +43,5 @@ async function getPosts (url) {
 
 getPosts(postsUrl)
 
-
+const submitPostBtn = document.querySelector("#submitPostBtn");
+const postInput = document.querySelector("#postInput");

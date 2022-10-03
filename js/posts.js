@@ -45,3 +45,7 @@ getPosts(postsUrl)
 
 const submitPostBtn = document.querySelector("#submitPostBtn");
 const postInput = document.querySelector("#postInput");
+
+let submitPost = () => {
+    
+}

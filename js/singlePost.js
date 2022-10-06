@@ -24,14 +24,13 @@ let listPost = (post) => {
 
 }
 
-async function getPosts (url) {
+async function getPost (url) {
     try {
         const token = localStorage.getItem("accessToken");
         // console.log(token);
         const options = {
             method: "GET",
             headers: {
-                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
         }
@@ -45,4 +44,4 @@ async function getPosts (url) {
     }
 }
 
-getPosts(postUrl);
+getPost(postUrl);

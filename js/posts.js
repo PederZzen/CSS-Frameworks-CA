@@ -10,7 +10,7 @@ let listPosts = (posts) => {
     let newPost = "";
     for (let post of posts) {
         // console.log(post);
-        const deleteBtn = `<button class="deleteBtn position-absolute top-0 end-0 m-2 btn btn-dark" data-delete="${post.id}">Delete</button>`;            
+        const deleteBtn = `<button class="deleteBtn position-absolute bottom-0 end-0 m-2 btn btn-dark" data-delete="${post.id}">Delete</button>`;            
   
         newPost += `
         <div class="card p-3 mt-3 d-flex position-relative>
@@ -58,13 +58,16 @@ const mediaInput = document.querySelector("#mediaInput");
 async function submitPost (url) {
     const title = titleInput.value;
     const bodyValue = bodyInput.value;
-    const media = mediaInput.value;
-
+    
     const entry = {
         title,
         body: bodyValue,
-        media,
     };
+    
+    if (mediaInput.value != "") {
+        const media = mediaInput.value;
+        entry["media"] = media;
+    } 
 
     console.log(entry);
 
@@ -78,9 +81,9 @@ async function submitPost (url) {
             },
             body: JSON.stringify(entry)
         }
-        const response = await fetch (url, options);
+        await fetch (url, options); // Er dette greit??
         // console.log(response);
-        const json = await response.json();
+        // const json = await response.json();
         // console.log(json);
         document.location.reload();
     } catch (error) {
@@ -95,8 +98,8 @@ postBtn.addEventListener("click", () => {
     mediaInput.value = "";
 });
 
-const deleteURL = `${API_BASE_URL}/api/v1/social/posts/`
-const deleteButton = document.querySelector("button.deleteBtn");
+const deleteURL = `${API_BASE_URL}/api/v1/social/posts/`;
+const deleteButton = document.querySelectorAll(".deleteBtn");
 
 async function deletePost (url) {
     try {
@@ -117,4 +120,3 @@ async function deletePost (url) {
     }
 }
 
-deleteButton.addEventListener("click", deletePost(deleteURL));

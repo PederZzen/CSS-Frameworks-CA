@@ -47,11 +47,11 @@
     <main class="container mt-5">
         <div class="row">
             <section class="mt-3 col-lg-8 m-lg-auto">
-                <form class="border bg-white">
-                    <!-- <input type="text" class="pt-4 pb-4 form-control bg-transparent border-0" placeholder="Say something awesome!"> -->
-                    <textarea name="postInput" id="postInput" class="form-control bg-transparent border-0" placeholder="Say something awesome!" style="resize: none;"></textarea>
-                    <input type="submit" id="submitPostBtn" value="Submit">
+                <form class="d-flex flex-column w-50">
+                    <input type="text" id="titleInput" name="title" placeholder="Title">
+                    <textarea name="postInput" id="bodyInput" class="mt-2 mb-2" placeholder="Whats on your mind?" style="resize: none;"></textarea>
                 </form>
+                <button id="postButton" class="button">Post</button>
                 <div id="postsFeed">Loading posts..</div>                            
             </section>           
         </div>

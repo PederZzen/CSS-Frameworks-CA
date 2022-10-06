@@ -6,6 +6,9 @@ let listPosts = (posts) => {
     let newPost = "";
     for (let post of posts) {
         // console.log(post);
+        const username = localStorage.getItem("username");
+        const deleteBtn = "<button id='deleteBtn'>Delete</button>";            
+  
         newPost += `
         <div class="card p-3 mt-3 d-flex>
             <img src="#" class="" alt="">
@@ -15,7 +18,8 @@ let listPosts = (posts) => {
             <a href="#" class="font-italic">@${post.author.name}</a>
             <p class="mt-2">${post.body}</p>
             <img src="${post.media}" class="" alt="">
-        </div>`
+            ${username === post.author.name ? deleteBtn : ""}
+        </div>`;
     }
     output.innerHTML = newPost;
 }
@@ -41,11 +45,62 @@ async function getPosts (url) {
     }
 }
 
-getPosts(postsUrl)
+getPosts(postsUrl);
 
-const submitPostBtn = document.querySelector("#submitPostBtn");
-const postInput = document.querySelector("#postInput");
+const postBtn = document.querySelector("#postButton");
+const titleInput = document.querySelector("#titleInput");
+const bodyInput = document.querySelector("#bodyInput");
 
-let submitPost = () => {
-    
+async function submitPost (url) {
+    const title = titleInput.value;
+    const bodyValue = bodyInput.value;
+
+    const entry = {
+        title,
+        body: bodyValue
+    }
+
+    try {
+        const token = localStorage.getItem("accessToken");
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(entry)
+        }
+        const response = await fetch (url, options);
+        // console.log(response);
+        const json = await response.json();
+        // console.log(json);
+        document.location.reload();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+postBtn.addEventListener("click", () => {
+    submitPost(postsUrl);
+    titleInput.value = "";
+    bodyInput.value = "";
+});
+
+async function deletePost (url) {
+    try {
+        const token = localStorage.getItem("accessToken");
+        const options = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+        const response = await fetch (url, options);
+        console.log(response);
+        const json = await response.json();
+        console.log(json);
+    } catch (error) {
+        console.log(error);
+    }
 }

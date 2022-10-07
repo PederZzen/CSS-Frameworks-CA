@@ -1,6 +1,11 @@
 const output = document.querySelector("#postsFeed");
 const API_BASE_URL = "https://nf-api.onrender.com";
-const postsUrl = `${API_BASE_URL}/api/v1/social/posts/?_author=true`;
+const postsUrl = `${API_BASE_URL}/api/v1/social/posts/`;
+const author = "?_author=true"
+
+/**
+ * List posts to home.html
+ */
 
 let listPosts = (posts) => {
     const username = localStorage.getItem("username");
@@ -25,7 +30,18 @@ let listPosts = (posts) => {
         </div>`;
     }
     output.innerHTML = newPost;
+
+    const deleteButtons = document.querySelectorAll(".deleteBtn");
+    console.log(deleteButtons);
+
+    for (let button of deleteButtons) {
+        console.log(button);
+    }
 }
+
+/**
+ * Get all posts from API
+ */
 
 async function getPosts (url) {
     try {
@@ -48,12 +64,16 @@ async function getPosts (url) {
     }
 }
 
-getPosts(postsUrl);
+getPosts(postsUrl + author);
 
 const postBtn = document.querySelector("#postButton");
 const titleInput = document.querySelector("#titleInput");
 const bodyInput = document.querySelector("#bodyInput");
 const mediaInput = document.querySelector("#mediaInput");
+
+/**
+ * Creates a new post
+ */
 
 async function submitPost (url) {
     const title = titleInput.value;
@@ -98,8 +118,9 @@ postBtn.addEventListener("click", () => {
     mediaInput.value = "";
 });
 
-const deleteURL = `${API_BASE_URL}/api/v1/social/posts/`;
-const deleteButton = document.querySelectorAll(".deleteBtn");
+/**
+ * Deletes a post
+ */
 
 async function deletePost (url) {
     try {
@@ -119,4 +140,5 @@ async function deletePost (url) {
         console.log(error);
     }
 }
+
 

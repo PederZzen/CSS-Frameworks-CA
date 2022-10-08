@@ -14,8 +14,16 @@ let listPosts = (posts) => {
 
     let newPost = "";
     for (let post of posts) {
-        // console.log(post);
-        const deleteBtn = `<button class="deleteBtn position-absolute bottom-0 end-0 m-2 btn btn-dark" data-delete="${post.id}">Delete</button>`;            
+        // const deleteBtn = `<button class="deleteBtn btn" data-delete="${post.id}">Delete</button>`;            
+        // const updateBtn = `<button class="updateBtn btn" data-update="${post.id}">Update</button>`;            
+        const postSettings = `
+            <div class="dropdown position-absolute  m-1 top-0 end-0">
+                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Edit</button>
+                <ul class="dropdown-menu">
+                    <li><button class="deleteBtn btn" data-delete="${post.id}">Delete</button></li>
+                    <li><button class="updateBtn btn" data-update="${post.id}">Update</button></li>
+                </ul>
+            </div>`
   
         newPost += `
         <div class="card p-3 mt-3 d-flex position-relative>
@@ -26,17 +34,30 @@ let listPosts = (posts) => {
             <a href="#">@${post.author.name}</a>
             <p class="mt-2">${post.body}</p>
             <img src="${post.media}" class="" alt="">
-            ${username === post.author.name ? deleteBtn : ""}
+            ${username === post.author.name ? postSettings : ""}
         </div>`;
     }
     output.innerHTML = newPost;
 
     const deleteButtons = document.querySelectorAll(".deleteBtn");
-    console.log(deleteButtons);
 
-    for (let button of deleteButtons) {
-        console.log(button);
-    }
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const id = button.getAttribute("data-delete");
+            console.log(id);
+
+            deletePost(postsUrl + id);
+        })
+    })
+
+    const updateButtons = document.querySelectorAll(".updateBtn");
+
+    updateButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const id = button.getAttribute("data-update");
+            console.log(id);
+        })
+    })
 }
 
 /**
@@ -136,9 +157,30 @@ async function deletePost (url) {
         console.log(response);
         const json = await response.json();
         console.log(json);
+        document.location.reload();
     } catch (error) {
         console.log(error);
     }
 }
 
+/** Update Post */
 
+async function updatePost (url) {
+    try {
+        const token = localStorage.getItem("accessToken");
+        const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+        const response = await fetch (url, options);
+        console.log(response);
+        const json = await response.json();
+        console.log(json);
+        document.location.reload();
+    } catch (error) {
+        console.log(error);
+    }
+}

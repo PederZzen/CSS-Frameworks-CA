@@ -13,15 +13,13 @@ let listPosts = (posts) => {
     welcomeMsg.innerHTML = `Welcome back ${username}!`
 
     let newPost = "";
-    for (let post of posts) {
-        // const deleteBtn = `<button class="deleteBtn btn" data-delete="${post.id}">Delete</button>`;            
-        // const updateBtn = `<button class="updateBtn btn" data-update="${post.id}">Update</button>`;            
+    for (let post of posts) {    
         const postSettings = `
             <div class="dropdown position-absolute  m-1 top-0 end-0">
                 <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Edit</button>
                 <ul class="dropdown-menu">
-                    <li><button class="deleteBtn btn" data-delete="${post.id}">Delete</button></li>
-                    <li><button class="updateBtn btn" data-update="${post.id}">Update</button></li>
+                    <li class="deleteBtn btn" data-delete="${post.id}">Delete</li>
+                    <li><a href="../updatePost.html?id=${post.id}" class="updateBtn btn" data-update="${post.id}">Update</a></li>
                 </ul>
             </div>`
   
@@ -44,8 +42,6 @@ let listPosts = (posts) => {
     deleteButtons.forEach(button => {
         button.addEventListener("click", () => {
             const id = button.getAttribute("data-delete");
-            console.log(id);
-
             deletePost(postsUrl + id);
         })
     })
@@ -53,9 +49,9 @@ let listPosts = (posts) => {
     const updateButtons = document.querySelectorAll(".updateBtn");
 
     updateButtons.forEach(button => {
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (e) => {
             const id = button.getAttribute("data-update");
-            console.log(id);
+            console.log(e);
         })
     })
 }
@@ -174,7 +170,7 @@ async function updatePost (url) {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
-        }
+        };
         const response = await fetch (url, options);
         console.log(response);
         const json = await response.json();
@@ -182,5 +178,6 @@ async function updatePost (url) {
         document.location.reload();
     } catch (error) {
         console.log(error);
-    }
-}
+    };
+};
+

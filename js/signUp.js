@@ -33,18 +33,24 @@ let formValidator = (event) => {
         password,
     }
 
-    if (name.length > 3) {
-        validName = true;
-        nameError.innerHTML = "";
+    const nameRegex = /^[a-z0-9_]{3,16}$/; //https://www.technicalbikash.com/2021/08/regex-for-username-validation.html
+
+    if (name !== "") {
+        if (nameRegex.test(name)) {
+            validName = true;
+            nameError.innerHTML = "";
+        } else {
+            nameError.innerHTML = "* Username must be longer than 3 characters and can only contain letters of the alphabet, underscore and numbers"
+        }  
     } else {
-        nameError.innerHTML = "* Name must be longer than 3 characters"
+        nameError.innerHTML = "* Please fill in username";
     }
+
 
     if (email.includes("@stud.noroff.no") || email.includes("@noroff.no")) {
         validEmail = true;
         emailError.innerHTML = ""
     } else {
-        console.log("Not a valid email");
         emailError.innerHTML = "* Email not valid";
     }  
 
@@ -80,11 +86,11 @@ async function register(url, userData) {
         const response = await fetch(url, postData);
         console.log(response);
         const json = await response.json();
-        console.log(json.statusCode);
+        console.log(json);
         if (json.statusCode == 400) {
             nameError.innerHTML = `${json.message}, <a href="./login.html">log in instead</a>`
         } 
-        if (response.ok == true) { form.submit(); }
+        if (response.ok == true) { window.location.href = "../login.html"; }
     } catch (error) {
         console.log(error);
     }

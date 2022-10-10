@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/updatePost.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="./js/posts.js" defer></script>
-    <title></title>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
 </head>
-
 <body class="bg-secondary">
     <header>
         <nav class="navbar navbar-expand-md p-4 mb-2 border-bottom">
@@ -43,20 +42,5 @@
             </div>
         </nav>
     </header>
-    
-    <main class="container mt-5">
-        <div class="row">
-            <section class="mt-3 col-lg-7 m-lg-auto">
-                <h1 id="welcomeMsg" class="mb-4"></h1>
-                <form class="d-flex flex-column">
-                    <input type="text" id="titleInput" class="rounded-2 p-2 border" name="title" placeholder="Title">
-                    <textarea name="postInput" id="bodyInput" class="mt-2 rounded-2 border p-2" placeholder="Whats on your mind?" style="resize: none;"></textarea>
-                    <input type="text" name="media" id="mediaInput" class="mt-2 mb-2 rounded-2 border p-2" placeholder="Add link to media">
-                </form>
-                <button id="postButton" class="btn btn-dark mb-4">Post</button>
-                <div id="postsFeed">Loading posts..</div>                            
-            </section>           
-        </div>
-    </main>
 </body>
 </html>

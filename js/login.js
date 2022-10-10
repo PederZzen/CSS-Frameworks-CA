@@ -34,7 +34,7 @@ let formValidator = (event) => {
         emailError.innerHTML = "* Email not valid";
     }  
     
-    if (password.length > 8) {
+    if (password.length >= 8) {
         validPassword = true;
         passwordError.innerHTML = "";
     } else {
@@ -62,14 +62,14 @@ async function login(url, userData) {
             body: JSON.stringify(userData),
         }
         const response = await fetch(url, postData);
-        console.log(response);
+        // console.log(response);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         const accessToken = json.accessToken;
         localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("username", json.name)
         if (response.ok == true) { 
-            form.submit(); 
-            emailError.innerHTML = "Success!!";
+            window.location.href = "../home.html"; 
         } else { 
             emailError.innerHTML = json.message;
         }

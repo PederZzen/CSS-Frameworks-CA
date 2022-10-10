@@ -42,5 +42,16 @@
             </div>
         </nav>
     </header>
+
+    <main class="container w-50 mt-4">
+        <a href="./home.html" class="fw-bold">&lt; Back to feed</a>
+        <h1 class="mt-3 mb-3">Update post</h1>
+        <form class="d-flex flex-column">
+            <input type="text" id="titleInput" class="rounded-2 p-2 border" name="title" placeholder="Title">
+            <textarea name="postInput" id="bodyInput" class="mt-2 rounded-2 border p-2" placeholder="Whats on your mind?" style="resize: none;"></textarea>
+            <input type="text" name="media" id="mediaInput" class="mt-2 mb-2 rounded-2 border p-2" placeholder="Add link to media">
+        </form>
+        <button id="updateButton" class="btn btn-dark mb-4">Update</button>
+    </main>
 </body>
 </html>

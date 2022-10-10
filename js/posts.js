@@ -95,16 +95,17 @@ const mediaInput = document.querySelector("#mediaInput");
 async function submitPost (url) {
     const title = titleInput.value;
     const bodyValue = bodyInput.value;
-    
+
     const entry = {
         title,
         body: bodyValue,
     };
-    
+
     if (mediaInput.value != "") {
         const media = mediaInput.value;
         entry["media"] = media;
     } 
+
 
     console.log(entry);
 
@@ -129,10 +130,15 @@ async function submitPost (url) {
 }
 
 postBtn.addEventListener("click", () => {
-    submitPost(postsUrl);
-    titleInput.value = "";
-    bodyInput.value = "";
-    mediaInput.value = "";
+    if (titleInput.value && bodyInput.value) {
+        submitPost(postsUrl);
+        titleInput.value = "";
+        bodyInput.value = "";
+        mediaInput.value = "";
+    } else {
+        const errorMsg = document.querySelector(".errorMsg");
+        errorMsg.innerHTML = "Title and Message must be filled out"
+    }
 });
 
 /**
@@ -158,26 +164,4 @@ async function deletePost (url) {
         console.log(error);
     }
 }
-
-/** Update Post */
-
-async function updatePost (url) {
-    try {
-        const token = localStorage.getItem("accessToken");
-        const options = {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-        };
-        const response = await fetch (url, options);
-        console.log(response);
-        const json = await response.json();
-        console.log(json);
-        document.location.reload();
-    } catch (error) {
-        console.log(error);
-    };
-};
 

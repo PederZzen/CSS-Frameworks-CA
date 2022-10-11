@@ -1,16 +1,18 @@
 const output = document.querySelector("#postsFeed");
 const API_BASE_URL = "https://nf-api.onrender.com";
 const postsUrl = `${API_BASE_URL}/api/v1/social/posts/`;
-const author = "?_author=true"
+const author = "?_author=true";
+
+const username = localStorage.getItem("username");
+const welcomeMsg = document.querySelector("#welcomeMsg");
+welcomeMsg.innerHTML = `Welcome back ${username}!`;
 
 /**
  * List posts to home.html
  */
 
 let listPosts = (posts) => {
-    const username = localStorage.getItem("username");
-    const welcomeMsg = document.querySelector("#welcomeMsg");
-    welcomeMsg.innerHTML = `Welcome back ${username}!`
+    output.innerHTML = "";
 
     let newPost = "";
     for (let post of posts) {    
@@ -22,16 +24,20 @@ let listPosts = (posts) => {
                     <li><a href="../updatePost.html?id=${post.id}" class="updateBtn btn" data-update="${post.id}">Update</a></li>
                 </ul>
             </div>`
+
+        let date = new Date(post.created);
+        let localDate = date.toLocaleString("default", {day: "numeric", month: "long", hour: "2-digit", minute: "2-digit"});
   
         newPost += `
         <div class="card p-3 mt-3 d-flex position-relative>
             <img src="#" class="" alt="">
             <a href="../singlePost.html?id=${post.id}">
-                <h3 class="h5 pt-2 fw-bold text-capitalize">${post.title}</h3>
+                <h3 class="h5 pt-2 fw-bold text-capitalize">${post.title ? post.title : "Untitled Post"}</h3>
             <a/>
             <a href="#">@${post.author.name}</a>
             <p class="mt-2">${post.body}</p>
             <img src="${post.media}" class="" alt="">
+            <p class="mt-2">${localDate}</p>
             ${username === post.author.name ? postSettings : ""}
         </div>`;
     }
@@ -45,20 +51,14 @@ let listPosts = (posts) => {
             deletePost(postsUrl + id);
         })
     })
-
-    const updateButtons = document.querySelectorAll(".updateBtn");
-
-    updateButtons.forEach(button => {
-        button.addEventListener("click", (e) => {
-            const id = button.getAttribute("data-update");
-            console.log(e);
-        })
-    })
 }
+
 
 /**
  * Get all posts from API
  */
+
+let collection = [];
 
 async function getPosts (url) {
     try {
@@ -75,6 +75,7 @@ async function getPosts (url) {
         // console.log(response);
         const json = await response.json();
         // console.log(json);
+        collection = json;
         listPosts(json);
     } catch (error) {
         console.log(error);
@@ -105,9 +106,6 @@ async function submitPost (url) {
         const media = mediaInput.value;
         entry["media"] = media;
     } 
-
-
-    console.log(entry);
 
     try {
         const token = localStorage.getItem("accessToken");
@@ -165,3 +163,30 @@ async function deletePost (url) {
     }
 }
 
+/** Sort */
+
+const filterOption = document.querySelectorAll(".filterOption");
+
+filterOption.forEach(option => {
+    option.addEventListener("click", (e) => {
+        const value = e.target.value;
+        const sortedUrl = `${postsUrl}${author}&sort=created&sortOrder=${value}`;
+        getPosts(sortedUrl);
+    })
+})
+
+const searchInput = document.querySelector("#searchInput");
+
+let filterPosts = () => {
+    const filterQuery = searchInput.value;
+    const filtered = collection.filter((post) => {
+        const filterAuthor = post.author.name.toUpperCase().indexOf(filterQuery.toUpperCase().trim()) > -1;
+        const filterTitle = post.title.toUpperCase().indexOf(filterQuery.toUpperCase().trim()) > -1;
+        
+        return filterAuthor || filterTitle;
+    });
+
+    listPosts(filtered)
+}
+
+searchInput.addEventListener("keyup", filterPosts);

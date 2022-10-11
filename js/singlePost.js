@@ -15,7 +15,7 @@ let listPost = (post) => {
     let localDate = date.toLocaleString("default", {day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit"});
 
     output.innerHTML = `   
-    <h1 class="text-capitalize mt-3">${post.title}</h1>
+    <h1 class="text-capitalize font-bold">${post.title}</h1>
     <h2>${post.author.name}</h2>
     <p class="mt-3">${post.body}</p>
     <img src="${post.media}" class="img-fluid">

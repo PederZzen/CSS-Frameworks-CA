@@ -39,18 +39,13 @@ getPost(postUrl);
 async function updatePost (url) {
     const title = titleInput.value;
     const bodyValue = bodyInput.value;
+    const media = mediaInput.value;
     
     const entry = {
         title,
         body: bodyValue,
+        media,
     };
-    
-    if (mediaInput.value != "") {
-        const media = mediaInput.value;
-        entry["media"] = media;
-    } else {
-        delete entry["media"];
-    }
 
     console.log(entry);
 

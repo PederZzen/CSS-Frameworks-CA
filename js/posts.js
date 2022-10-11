@@ -48,7 +48,9 @@ let listPosts = (posts) => {
     deleteButtons.forEach(button => {
         button.addEventListener("click", () => {
             const id = button.getAttribute("data-delete");
-            deletePost(postsUrl + id);
+            if (confirm("Are you sure?") == true) {
+                deletePost(postsUrl + id);
+            }
         })
     })
 }

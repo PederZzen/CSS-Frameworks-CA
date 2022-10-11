@@ -13,7 +13,7 @@ const navBar = document.querySelector("header").innerHTML = `
             <span class="me-auto"></span>                 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="../home.html" aria-current="page" class="nav-link active fw-bold">Feed</a>
+                    <a href="../home.html" class="nav-link fw-bold">Feed</a>
                 </li>
                 <li class="nav-item">
                     <a href="../profile.html" class="nav-link fw-bold">Profile</a>

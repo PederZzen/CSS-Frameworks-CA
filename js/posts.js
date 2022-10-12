@@ -35,7 +35,7 @@ let listPosts = (posts) => {
                 <h3 class="h5 pt-2 fw-bold text-white text-capitalize">${post.title ? post.title : "Untitled Post"}</h3>
             <a/>
             <a href="#" class="text-white">@${post.author.name}</a>
-            <p class="mt-2">${post.body}</p>
+            <p class="mt-2 text-white">${post.body}</p>
             <img src="${post.media}" class="" alt="">
             <p class="mt-2">${localDate}</p>
             ${username === post.author.name ? postSettings : ""}

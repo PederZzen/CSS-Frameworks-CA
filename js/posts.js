@@ -18,7 +18,7 @@ let listPosts = (posts) => {
     for (let post of posts) {    
         const postSettings = `
             <div class="dropdown position-absolute  m-1 top-0 end-0">
-                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Edit</button>
+                <button class="btn btn-primary text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Edit</button>
                 <ul class="dropdown-menu">
                     <li class="deleteBtn btn" data-delete="${post.id}">Delete</li>
                     <li><a href="../updatePost.html?id=${post.id}" class="updateBtn btn" data-update="${post.id}">Update</a></li>
@@ -29,7 +29,7 @@ let listPosts = (posts) => {
         let localDate = date.toLocaleString("default", {day: "numeric", month: "long", hour: "2-digit", minute: "2-digit"});
   
         newPost += `
-        <div class="card p-3 bg-secondary border-white text-white mt-3 d-flex position-relative>
+        <div class="card p-3 bg-secondary text-white mt-3 d-flex position-relative>
             <img src="#" class="" alt="">
             <a href="../singlePost.html?id=${post.id}">
                 <h3 class="h5 pt-2 fw-bold text-white text-capitalize">${post.title ? post.title : "Untitled Post"}</h3>

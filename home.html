@@ -17,23 +17,25 @@
     <main class="container mt-5">
         <div class="row">
             <section class="mt-3 col-lg-7 m-lg-auto">
-                <h1 id="welcomeMsg" class="h2 mb-4 text-white"></h1>
-                <span class="errorMsg text-primary">&nbsp;</span>
-                <form class="d-flex flex-column w-75">
-                    <input type="text" id="titleInput" class="rounded-2 bg-secondary form-control text-white p-2 border" name="title" placeholder="Title">
-                    <textarea name="postInput" id="bodyInput" class="mt-2 bg-secondary form-control text-white rounded-2 border p-2" placeholder="Whats on your mind?" style="resize: none;"></textarea>
-                    <input type="text" name="media" id="mediaInput" class="mt-2 form-control bg-secondary text-white rounded-2 border p-2" placeholder="Add link to media">
-                </form>
-                <button id="postButton" class="btn btn-primary rounded-5 w-25 text-white mt-4 mb-4">Post</button>
-                <div class="d-flex gap-2">
-                    <input type="search" class="rounded-2 border bg-secondary text-white form-control w-50 p-1" id="searchInput" placeholder="Search by author or title">
-                    <select name="filter" class="bg-secondary text-white border rounded-2 p-1" id="filter">
-                        <option value="none" selected disabled hidden>Filter</option>
-                        <option id="ascOption" class="filterOption" value="asc">Sort by oldest</option>
-                        <option id="descOption" class="filterOption" value="desc">Sort by newest</option>
-                    </select>
+                <div class="col-12 col-md-8 m-auto">
+                    <h1 id="welcomeMsg" class="h2 mb-4 text-white"></h1>
+                    <span class="errorMsg text-primary">&nbsp;</span>
+                    <form class="d-flex flex-column">
+                        <input type="text" id="titleInput" class="rounded-2 bg-secondary form-control text-white p-2" name="title" placeholder="Title">
+                        <textarea name="postInput" id="bodyInput" class="mt-2 bg-secondary form-control text-white rounded-2 p-2" placeholder="Whats on your mind?" style="resize: none;"></textarea>
+                        <input type="text" name="media" id="mediaInput" class="mt-2 form-control bg-secondary text-white rounded-2 p-2" placeholder="Add link to media">
+                    </form>
+                    <button id="postButton" class="btn btn-primary rounded-5 w-25 text-white mt-4 mb-4">Post</button>
+                    <div class="d-flex gap-2">
+                        <input type="search" class="rounded-2 border bg-secondary text-white form-control w-50 p-1" id="searchInput" placeholder="Search by author or title">
+                        <select name="filter" class="bg-secondary text-white border rounded-2 p-1" id="filter">
+                            <option value="none" selected disabled hidden>Filter</option>
+                            <option id="ascOption" class="filterOption" value="asc">Sort by oldest</option>
+                            <option id="descOption" class="filterOption" value="desc">Sort by newest</option>
+                        </select>
+                    </div>
                 </div>
-                <div id="postsFeed">Loading posts..</div>                            
+                <div id="postsFeed" class="mt-4">Loading posts..</div>                            
             </section>           
         </div>
     </main>

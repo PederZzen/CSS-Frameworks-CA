@@ -39,15 +39,16 @@ getPost(postUrl);
 async function updatePost (url) {
     const title = titleInput.value;
     const bodyValue = bodyInput.value;
-    const media = mediaInput.value;
     
     const entry = {
         title,
         body: bodyValue,
-        media,
     };
 
-    console.log(entry);
+    if (mediaInput.value != "") {
+        const media = mediaInput.value;
+        entry["media"] = media;
+    } 
 
     try {
         const token = localStorage.getItem("accessToken");
@@ -63,7 +64,7 @@ async function updatePost (url) {
         console.log(response);
         const json = await response.json();
         console.log(json);
-        window.location.href = "../home.html";
+        history.back();
     } catch (error) {
         console.log(error);
     };

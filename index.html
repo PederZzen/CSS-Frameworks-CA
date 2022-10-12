@@ -11,34 +11,35 @@
 </head>
 
 <body class="text-white container">
-    <div id="nameError" class="bg-danger text-center"></div>
-    <div id="emailError" class="bg-danger text-center"></div>
-    <div id="passwordError" class="bg-danger text-center"></div>
     <section class="row">
         <div class="col-8 col-md-6 col-lg-4 mx-auto mt-4">
             <div class="text-center">
                 <img src="./img/logo.svg" alt="logo" class="mt-3">
-                <h1 class="h4 mt-3 fw-bold">The Real fakebook</h1>            
-                <h2 class="m-4 h4 font-size-1">Sign up</h2>            
+                <h1 class="h5 mt-3 fw-bold">The Real fakebook</h1>            
+                <p class="m-4">Sign up</p>            
             </div>
-            <form id="signUpForm" class="d-flex flex-column gap-4">
+            <form id="signUpForm" class="d-flex flex-column">
                 <div class="form-floating">
                     <input type="name" id="name" name="name" placeholder="" class="form-control bg-transparent text-white">
                     <label for="email">Username</label>
                 </div>
+                <span id="nameError" class="p-1 text-primary">&nbsp;</span>
                 <div class="form-floating">
                     <input type="email" id="email" name="email" placeholder="" class="form-control bg-transparent text-white">
                     <label for="email">Email</label>
                 </div>
+                <span id="emailError" class="p-1 text-primary">&nbsp;</span>
                 <div class="form-floating">
                     <input type="password" name="password" id="password" placeholder="" class="form-control bg-transparent text-white">
                     <label for="password">Password</label>               
                 </div>
+                <span id="passwordError" class="p-1 text-primary">&nbsp;</span>
                 <div class="form-floating">
                     <input type="password" name="passwordRepeat" id="passwordRepeat" placeholder="" class="form-control bg-transparent text-white">
                     <label for="password">Repeat password</label>               
                 </div>
-                <input type="submit" id="signUpBtn" value="Sign up" class="btn btn-primary text-white rounded-5">                 
+                <span id="passwordErrorRepeat" class="p-1 text-primary">&nbsp;</span>
+                <input type="submit" id="signUpBtn" value="Sign up" class="btn btn-primary text-white w-50 align-self-center rounded-5">                 
             </form> 
             <p class="text-center m-4">Already a member? <a href="./login.html" class="text-primary">Log in</a></p>
         </div>        

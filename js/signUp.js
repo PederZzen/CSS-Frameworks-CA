@@ -8,8 +8,9 @@ const passwordInput = document.querySelector("input#password");
 const passwordRepeatInput = document.querySelector("input#passwordRepeat");
 const signUpBtn = document.querySelector("#signUpBtn");
 const nameError = document.querySelector("#nameError");
-const emailError = document.querySelector("div#emailError");
-const passwordError = document.querySelector("div#passwordError");
+const emailError = document.querySelector("#emailError");
+const passwordError = document.querySelector("#passwordError");
+const passwordErrorRepeat = document.querySelector("#passwordErrorRepeat");
 
 /** Register */
 
@@ -38,7 +39,7 @@ let formValidator = (event) => {
     if (name !== "") {
         if (nameRegex.test(name)) {
             validName = true;
-            nameError.innerHTML = "";
+            nameError.innerHTML = "&nbsp;";
         } else {
             nameError.innerHTML = "* Username must be longer than 3 characters and can only contain letters of the alphabet, underscore and numbers"
         }  
@@ -49,17 +50,17 @@ let formValidator = (event) => {
 
     if (email.includes("@stud.noroff.no") || email.includes("@noroff.no")) {
         validEmail = true;
-        emailError.innerHTML = ""
+        emailError.innerHTML = "&nbsp;"
     } else {
         emailError.innerHTML = "* Email not valid";
     }  
 
     if (passwordRepeat != password) {
-        passwordError.innerHTML = "* Passwords do not match";
+        passwordErrorRepeat.innerHTML = "* Passwords do not match";
     } else if (password.length < 8) {
         passwordError.innerHTML = "* Password must be longer than 8 characters";
     } else {
-        passwordError.innerHTML = "";
+        passwordError.innerHTML = "&nbsp;";
         validPassword = true;
     }
 

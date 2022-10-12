@@ -5,7 +5,7 @@ $primary: #D95B00;
 $secondary: #2e2e2e;
 
 $link-decoration: none;
-$link-color: black;
+$link-color: $primary;
 
 
 @import "../node_modules/bootstrap/scss/bootstrap";

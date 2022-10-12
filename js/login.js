@@ -5,8 +5,8 @@ const form = document.querySelector("#signUpForm");
 const emailInput = document.querySelector("input#email");
 const passwordInput = document.querySelector("input#password");
 const loginBtn = document.querySelector("#loginBtn");
-const emailError = document.querySelector("div#emailError");
-const passwordError = document.querySelector("div#passwordError");
+const emailError = document.querySelector("#emailError");
+const passwordError = document.querySelector("#passwordError");
 
 /** Login */
 
@@ -28,7 +28,7 @@ let formValidator = (event) => {
 
     if (email.includes("@stud.noroff.no") || email.includes("@noroff.no")) {
         validEmail = true;
-        emailError.innerHTML = ""
+        emailError.innerHTML = "&nbsp;"
     } else {
         console.log("Not a valid email");
         emailError.innerHTML = "* Email not valid";
@@ -36,7 +36,7 @@ let formValidator = (event) => {
     
     if (password.length >= 8) {
         validPassword = true;
-        passwordError.innerHTML = "";
+        passwordError.innerHTML = "&nbsp;";
     } else {
         console.log("Password must be longer than 8 characters");
         passwordError.innerHTML = "* Password must be longer than 8 characters";

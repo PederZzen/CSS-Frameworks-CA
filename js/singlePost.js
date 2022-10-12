@@ -8,6 +8,7 @@ const API_BASE_URL = "https://nf-api.onrender.com";
 const postUrl = `${API_BASE_URL}/api/v1/social/posts/${id}?_author=true&_comments=true&_reactions=true`;
 
 let listPost = (post) => {
+    
     console.log(post);
     document.title = "The Real fakebook | " + post.title;
 
@@ -27,7 +28,6 @@ let listPost = (post) => {
 async function getPost (url) {
     try {
         const token = localStorage.getItem("accessToken");
-        // console.log(token);
         const options = {
             method: "GET",
             headers: {
@@ -35,13 +35,22 @@ async function getPost (url) {
             },
         }
         const response = await fetch (url, options);
-        // console.log(response);
         const json = await response.json();
-        // console.log(json);
         listPost(json);
+        listComments()
     } catch (error) {
         console.log(error);
     }
 }
 
 getPost(postUrl);
+
+const commentOutput = document.querySelector("#comments");
+
+let listComments = () => {
+    commentOutput.innerHTML = `
+    <h2>Comments</h2>
+    <textarea class="form-control" placeholder="Comment this post"></textarea>
+    Under construction!`
+}
+

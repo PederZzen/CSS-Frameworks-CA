@@ -29,12 +29,12 @@ let listPosts = (posts) => {
         let localDate = date.toLocaleString("default", {day: "numeric", month: "long", hour: "2-digit", minute: "2-digit"});
   
         newPost += `
-        <div class="card p-3 mt-3 d-flex position-relative>
+        <div class="card p-3 bg-secondary border-white text-white mt-3 d-flex position-relative>
             <img src="#" class="" alt="">
             <a href="../singlePost.html?id=${post.id}">
-                <h3 class="h5 pt-2 fw-bold text-capitalize">${post.title ? post.title : "Untitled Post"}</h3>
+                <h3 class="h5 pt-2 fw-bold text-white text-capitalize">${post.title ? post.title : "Untitled Post"}</h3>
             <a/>
-            <a href="#">@${post.author.name}</a>
+            <a href="#" class="text-white">@${post.author.name}</a>
             <p class="mt-2">${post.body}</p>
             <img src="${post.media}" class="" alt="">
             <p class="mt-2">${localDate}</p>
@@ -48,7 +48,7 @@ let listPosts = (posts) => {
     deleteButtons.forEach(button => {
         button.addEventListener("click", () => {
             const id = button.getAttribute("data-delete");
-            if (confirm("Are you sure?") == true) {
+            if (confirm("Are you sure you want to delete this awesome post?") == true) {
                 deletePost(postsUrl + id);
             }
         })

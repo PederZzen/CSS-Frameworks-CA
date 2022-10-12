@@ -34,7 +34,7 @@ let listProfile = (profile) => {
 
     header.innerHTML = `
     <img src="${profile.avatar ? profile.avatar : placeholderImg}" alt="The profile picture of ${profile.name}" class="rounded-circle col-4">
-    <h1 class="m-4 text-capitalize">${profile.name}</h1>
+    <h1 class="m-4 text-capitalize text-white">${profile.name}</h1>
     `;
 
     if (profile.followers.length >= 1) {

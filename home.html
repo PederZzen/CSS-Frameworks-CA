@@ -5,48 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/utilities.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="./js/posts.js" defer></script>
     <title></title>
 </head>
 
 <body class="bg-secondary">
-    <header>
-        <nav class="navbar navbar-expand-md p-4 mb-2 border-bottom">
-            <div class="container">
-                <a class="navbar-brand text-primary fw-bold" href="./home.html">The Real fakebook</a>          
-                <button class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
-                    <div class="fw-bold text-primary">Menu</div>
-                </button>
-                <div class="collapse navbar-collapse" id="nav">
-                    <span class="me-auto"></span>                 
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <form class="d-flex border border-primary rounded-5">
-                                <button type="submit" class="border-0 bg-transparent">
-                                    <img src="./img/search.svg" alt="Search icon">
-                                </button>
-                                <input type="search" placeholder="Search.." class="form-control border-0 bg-transparent">
-                            </form> 
-                        </li>
-                        <li class="nav-item">
-                            <a href="./home.html" aria-current="page" class="nav-link active fw-bold">Feed</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./profile.html" class="nav-link fw-bold">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./login.html" class="nav-link fw-bold">Log out</a>
-                        </li>
-                    </ul>                    
-                </div>
-            </div>
-        </nav>
-    </header>
+    <header></header>
     
     <main class="container mt-5">
         <div class="row">
             <section class="mt-3 col-lg-7 m-lg-auto">
+                <div class="errorMsg bg-danger text-white mt-2 mb-2"></div>
                 <h1 id="welcomeMsg" class="mb-4"></h1>
                 <form class="d-flex flex-column">
                     <input type="text" id="titleInput" class="rounded-2 p-2 border" name="title" placeholder="Title">
@@ -54,6 +25,14 @@
                     <input type="text" name="media" id="mediaInput" class="mt-2 mb-2 rounded-2 border p-2" placeholder="Add link to media">
                 </form>
                 <button id="postButton" class="btn btn-dark mb-4">Post</button>
+                <div>
+                    <input type="search" id="searchInput" placeholder="Search by author or title">
+                    <select name="filter btn" id="filter">
+                        <option value="none" selected disabled hidden>Filter</option>
+                        <option id="ascOption" class="filterOption" value="asc">Sort by oldest</option>
+                        <option id="descOption" class="filterOption" value="desc">Sort by newest</option>
+                    </select>
+                </div>
                 <div id="postsFeed">Loading posts..</div>                            
             </section>           
         </div>

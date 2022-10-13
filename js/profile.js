@@ -25,25 +25,35 @@ async function getProfile (url) {
         console.log(error);
     }
 }
-
+ 
 getProfile(profileUrl)
 
 let listProfile = (profile) => {
-    console.log(profile.followers);
     const placeholderImg = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
 
     header.innerHTML = `
-    <img src="${profile.avatar ? profile.avatar : placeholderImg}" alt="The profile picture of ${profile.name}" class="rounded-circle col-4">
+    <img src="${profile.avatar ? profile.avatar : placeholderImg}" alt="The profile picture of ${profile.name}" class="rounded-circle col-2">
     <h1 class="m-4 text-capitalize text-white">${profile.name}</h1>
     `;
 
     if (profile.followers.length >= 1) {
         for (let follower of profile.followers) {
             followers.innerHTML += `
-            <li><img src="${follower.avatar}" class="rounded-circle w-25 p-2" alt="${follower.name}s profile picture">${follower.name}</li>`
-        }
+            <li><img src="${follower.avatar}" class="rounded-circle w-25 p-2" alt="${follower.name}s profile picture">${follower.name}</li>`;
+        };
     } else {
-        followers.innerHTML = "No followers.."
-    }
+        followers.innerHTML = "No followers..";
+    };
 
-}
+    if (profile.following.length >= 1) {
+        console.log(profile.following);
+        for (let following of profile.following) {
+            following.innerHTML += `
+            <li><img src="${following.avatar ? profile.avatar : placeholderImg}" class="rounded-circle w-25 p-2" alt="${following.name}s profile picture">${following.name}</li>`;
+        };
+    } else {
+        following.innerHTML = "No followers..";
+    };
+};
+
+

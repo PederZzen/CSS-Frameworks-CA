@@ -19,7 +19,7 @@ const navBar = document.querySelector("header").innerHTML = `
                     <a href="../profile.html" class="nav-link text-white fw-bold">Profile</a>
                 </li>
                 <li>
-                    <a href="../login.html" id="logOut" class=" nav-item nav-link text-white fw-bold">Log out</a>
+                    <a href="../index.html" id="logOut" class=" nav-item nav-link text-white fw-bold">Log out</a>
                 </li>
             </ul>                    
         </div>
@@ -31,12 +31,12 @@ const navBar = document.querySelector("header").innerHTML = `
  */
 
 const logOutBtn = document.querySelector("#logOut").addEventListener("click", () => {
-    window.location.href = "../login.html";
+    window.location.href = "../index.html";
     localStorage.clear();
 });
 
 const token = localStorage.getItem("accessToken");
 
 if (!token) {
-    window.location.href = "../login.html";
+    window.location.href = "../index.html";
 }

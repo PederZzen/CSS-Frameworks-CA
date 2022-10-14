@@ -29,18 +29,18 @@ let listPosts = (posts) => {
         let localDate = date.toLocaleString("default", {day: "numeric", month: "long", hour: "2-digit", minute: "2-digit"});
   
         newPost += `
-        <div class="card p-3 bg-secondary text-white mt-3 d-flex position-relative>
-            <img src="#" class="" alt="">
-            <a href="../singlePost.html?id=${post.id}">
-                <h3 class="h5 pt-2 fw-bold text-white text-capitalize">${post.title ? post.title : "Untitled Post"}</h3>
-            <a/>
-            <a href="#" class="text-white">@${post.author.name}</a>
-            <p class="mt-2 text-white">${post.body}</p>
-            <img src="${post.media}" class="" alt="">
-            <p class="mt-2">${localDate}</p>
+        <div class="position-relative card p-3 bg-secondary mt-3 d-flex">
+            <a href="../singlePost.html?id=${post.id}" class="text-white">
+                <h3 class="h5 pt-2 fw-bold text-capitalize">${post.title ? post.title : "Untitled Post"}</h3>
+                <p>@${post.author.name}</p>
+                <p class="">${post.body}</p>
+                <img src="${post.media}" class="img-fluid" alt="">
+                <p class="mt-2 opacity-50">${localDate}</p>
+            </a>
             ${username === post.author.name ? postSettings : ""}
-        </div>`;
+        </div>`
     }
+    
     output.innerHTML = newPost;
 
     const deleteButtons = document.querySelectorAll(".deleteBtn");

@@ -55,13 +55,16 @@ let formValidator = (event) => {
         emailError.innerHTML = "* Email not valid";
     }  
 
-    if (passwordRepeat != password) {
-        passwordErrorRepeat.innerHTML = "* Passwords do not match";
-    } else if (password.length < 8) {
-        passwordError.innerHTML = "* Password must be longer than 8 characters";
-    } else {
+    if (password.length >= 8) {
         passwordError.innerHTML = "&nbsp;";
-        validPassword = true;
+        if (passwordRepeat === password) {
+            passwordErrorRepeat.innerHTML = "&nbsp;";
+            validPassword = true;
+        } else {
+            passwordErrorRepeat.innerHTML = "* Passwords do not match";
+        }
+    } else {
+        passwordError.innerHTML = "* Password must be longer than 8 characters";
     }
 
     if (validEmail && validPassword && passwordRepeat) {
@@ -89,9 +92,9 @@ async function register(url, userData) {
         const json = await response.json();
         console.log(json);
         if (json.statusCode == 400) {
-            nameError.innerHTML = `${json.message}, <a href="./login.html">log in instead</a>`
+            nameError.innerHTML = `${json.message}, <a href="./index.html">log in instead</a>`
         } 
-        if (response.ok == true) { window.location.href = "../login.html"; }
+        if (response.ok == true) { window.location.href = "../index.html"; }
     } catch (error) {
         console.log(error);
     }

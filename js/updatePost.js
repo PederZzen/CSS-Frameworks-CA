@@ -64,7 +64,7 @@ async function updatePost (url) {
         console.log(response);
         const json = await response.json();
         console.log(json);
-        history.back();
+        window.location.href = "../home.html";
     } catch (error) {
         console.log(error);
     };

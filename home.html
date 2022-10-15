@@ -28,14 +28,14 @@
                     <button id="postButton" class="btn btn-primary rounded-5 w-25 text-white mt-4 mb-4">Post</button>
                     <div class="d-flex gap-2">
                         <input type="search" class="rounded-2 border bg-secondary text-white form-control w-50 p-2" id="searchInput" placeholder="Search by author or title">
-                        <select name="filter" class="bg-secondary text-primary opacity-75 border rounded-2 p-1" id="filter">
-                            <option value="none" selected disabled hidden>Filter</option>
-                            <option id="ascOption" class="filterOption" value="asc">Sort by oldest</option>
-                            <option id="descOption" class="filterOption" value="desc">Sort by newest</option>
-                        </select>
                     </div>
                 </div>
-                <div id="postsFeed" class="mt-4">Loading posts..</div>                            
+                <div id="postsFeed" class="mt-4 text-primary">
+                    <p>Loading posts..</p>
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only"></span>
+                    </div>    
+                </div>                            
             </section>           
         </div>
     </main>

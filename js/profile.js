@@ -6,7 +6,6 @@ const postsOutput = document.querySelector("#profilePosts");
 
 let username = localStorage.getItem("username");
 
-
 const API_BASE_URL = "https://nf-api.onrender.com";
 const profileUrl = `${API_BASE_URL}/api/v1/social/profiles/${username}?_posts=true&_following=true&_followers=true`;
 
@@ -60,9 +59,6 @@ let listProfile = (profile) => {
 };
 
 let listPosts = (profile) => {
-
-    console.log(profile.posts);
-
     postsOutput.innerHTML = "";
 
     let newPost = "";

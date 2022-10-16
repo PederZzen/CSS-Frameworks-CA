@@ -42,20 +42,19 @@ let listProfile = (profile) => {
     if (profile.followers.length >= 1) {
         for (let follower of profile.followers) {
             followers.innerHTML += `
-            <li><img src="${follower.avatar}" class="rounded-circle w-25 p-2" alt="${follower.name}s profile picture">${follower.name}</li>`;
+            <li><img src="${follower.avatar}" class="m-2 rounded-circle" style="height: 2rem;" alt="${follower.name}s profile picture">${follower.name}</li>`;
         };
     } else {
         followers.innerHTML = "No followers..";
     };
 
     if (profile.following.length >= 1) {
-        console.log(profile.following);
-        for (let following of profile.following) {
+        for (let follows of profile.following) {
             following.innerHTML += `
-            <li><img src="${following.avatar ? profile.avatar : placeholderImg}" class="rounded-circle w-25 p-2" alt="${following.name}s profile picture">${following.name}</li>`;
+            <li><img src="${follows.avatar ? follows.avatar : placeholderImg}" class="m-2 rounded-circle" style="height: 2rem;" alt="${follows.name}s profile picture">${follows.name}</li>`;
         };
     } else {
-        following.innerHTML = "No followers..";
+        following.innerHTML = "Not following anyone..";
     };
 };
 
@@ -89,7 +88,13 @@ let listPosts = (profile) => {
         </div>`
     }
     
-    postsOutput.innerHTML = newPost;
+    
+    if (profile.posts.length == 0) { 
+        postsOutput.innerHTML = `
+        <p class="card bg-secondary p-2 text-white">No posts yet.. Go to feed and write something awesome!</p>
+        ` } else {
+        postsOutput.innerHTML = newPost;
+    }
 
     const deleteButtons = document.querySelectorAll(".deleteBtn");
 

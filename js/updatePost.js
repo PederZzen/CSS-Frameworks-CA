@@ -21,9 +21,7 @@ async function getPost (url) {
             },
         }
         const response = await fetch (url, options);
-        console.log(response);
         const post = await response.json();
-        console.log(post);
 
         titleInput.value = post.title;
         bodyInput.value = post.body;
@@ -60,10 +58,7 @@ async function updatePost (url) {
             },
             body: JSON.stringify(entry),
         };
-        const response = await fetch (url, options);
-        console.log(response);
-        const json = await response.json();
-        console.log(json);
+        await fetch (url, options);
         window.location.href = "../home.html";
     } catch (error) {
         console.log(error);

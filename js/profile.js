@@ -7,6 +7,7 @@ const postsOutput = document.querySelector("#profilePosts");
 let username = localStorage.getItem("username");
 
 const API_BASE_URL = "https://nf-api.onrender.com";
+const postsUrl = `${API_BASE_URL}/api/v1/social/posts/`;
 const profileUrl = `${API_BASE_URL}/api/v1/social/profiles/${username}?_posts=true&_following=true&_followers=true`;
 
 async function getProfile (url) {
@@ -100,5 +101,22 @@ let listPosts = (profile) => {
             }
         })
     })
+}
+
+async function deletePost (url) {
+    try {
+        const token = localStorage.getItem("accessToken");
+        const options = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+        await fetch (url, options);
+        document.location.reload();
+    } catch (error) {
+        console.log(error);
+    }
 }
 

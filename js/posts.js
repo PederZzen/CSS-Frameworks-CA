@@ -1,5 +1,3 @@
-// import { listPosts } from "./posts.mjs";
-
 const output = document.querySelector("#postsFeed");
 const API_BASE_URL = "https://nf-api.onrender.com";
 const postsUrl = `${API_BASE_URL}/api/v1/social/posts/`;

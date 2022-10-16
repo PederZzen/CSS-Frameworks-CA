@@ -78,7 +78,6 @@ signUpBtn.addEventListener("click", formValidator);
 
 
 async function register(url, userData) {
-    // console.log(url, userData);
     try {
         const postData = {
             method: "POST",
@@ -88,9 +87,7 @@ async function register(url, userData) {
             body: JSON.stringify(userData),
         }
         const response = await fetch(url, postData);
-        console.log(response);
         const json = await response.json();
-        console.log(json);
         if (json.statusCode == 400) {
             nameError.innerHTML = `${json.message}, <a href="./index.html">log in instead</a>`
         } 

@@ -1,5 +1,7 @@
 # JavaScript 2 CA
 
+The project was to create a social media platform were you could register a user, log in and post stuff. This is the Fakebook.
+
 ## Project planning
 
 I used Notion to keep track of all my to-dos

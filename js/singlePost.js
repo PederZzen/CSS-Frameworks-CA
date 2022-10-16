@@ -8,6 +8,7 @@ const API_BASE_URL = "https://nf-api.onrender.com";
 const postsUrl = `${API_BASE_URL}/api/v1/social/posts/${id}?_author=true&_comments=true&_reactions=true`;
 
 let listPost = (post) => {
+    document.title = "The Real fakebook | " + post.title;
     const postSettings = `
     <div class="dropdown position-absolute  m-1 top-0 end-0">
         <button class="btn btn-primary text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Edit</button>

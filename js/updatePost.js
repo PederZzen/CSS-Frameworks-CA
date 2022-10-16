@@ -23,6 +23,8 @@ async function getPost (url) {
         const response = await fetch (url, options);
         const post = await response.json();
 
+        document.title = "The Real fakebook | " + post.title;
+
         titleInput.value = post.title;
         bodyInput.value = post.body;
         mediaInput.value = post.media;

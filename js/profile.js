@@ -31,7 +31,9 @@ async function getProfile (url) {
  
 getProfile(profileUrl)
 
+
 let listProfile = (profile) => {
+    document.title = "The Real fakebook | " + profile.name; 
     const placeholderImg = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
 
     header.innerHTML = `

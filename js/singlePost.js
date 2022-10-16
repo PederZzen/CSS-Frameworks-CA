@@ -71,10 +71,7 @@ async function deletePost (url) {
                 Authorization: `Bearer ${token}`,
             },
         }
-        const response = await fetch (url, options);
-        console.log(response);
-        const json = await response.json();
-        console.log(json);
+        await fetch (url, options);
         window.location.href = "../home.html";
     } catch (error) {
         console.log(error);

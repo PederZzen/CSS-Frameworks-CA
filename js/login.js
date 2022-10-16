@@ -30,7 +30,6 @@ let formValidator = (event) => {
         validEmail = true;
         emailError.innerHTML = "&nbsp;"
     } else {
-        console.log("Not a valid email");
         emailError.innerHTML = "* Email not valid";
     }  
     
@@ -38,7 +37,6 @@ let formValidator = (event) => {
         validPassword = true;
         passwordError.innerHTML = "&nbsp;";
     } else {
-        console.log("Password must be longer than 8 characters");
         passwordError.innerHTML = "* Password must be longer than 8 characters";
     }
 
@@ -53,7 +51,6 @@ loginBtn.addEventListener("click", formValidator);
 
 async function login(url, userData) {
     try {
-        // console.log(url, userData);
         const postData = {
             method: "POST",
             headers: {
@@ -62,9 +59,7 @@ async function login(url, userData) {
             body: JSON.stringify(userData),
         }
         const response = await fetch(url, postData);
-        // console.log(response);
         const json = await response.json();
-        // console.log(json);
         const accessToken = json.accessToken;
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("username", json.name)
